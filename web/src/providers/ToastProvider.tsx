@@ -7,6 +7,7 @@ import type { StatusVariants } from "@opal/types";
 import { NEXT_PUBLIC_INCLUDE_ERROR_POPUP_SUPPORT_LINK } from "@/lib/constants";
 import { toast, toastStore, MAX_VISIBLE_TOASTS } from "@/hooks/useToast";
 import type { Toast, ToastLevel } from "@/hooks/useToast";
+import { DEFAULT_SUPPORT_EMAIL } from "@/lib/branding";
 
 const ANIMATION_DURATION = 200; // matches tailwind fade-out-scale (0.2s)
 const MAX_TOAST_MESSAGE_LENGTH = 150;
@@ -26,9 +27,7 @@ function buildDescription(t: Toast): string | undefined {
   const parts: string[] = [];
   if (t.description) parts.push(t.description);
   if (t.level === "error" && NEXT_PUBLIC_INCLUDE_ERROR_POPUP_SUPPORT_LINK) {
-    parts.push(
-      "Need help? Join our community at https://discord.gg/4NA5SbzrWb for support!"
-    );
+    parts.push(`Need help? Contact ${DEFAULT_SUPPORT_EMAIL} for support.`);
   }
   return parts.length > 0 ? parts.join(" ") : undefined;
 }

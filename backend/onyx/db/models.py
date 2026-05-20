@@ -2777,7 +2777,7 @@ class ChatSession(Base):
         ForeignKey("persona.id"), nullable=True
     )
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
-    # This chat created by OnyxBot
+    # This chat was created by the Slack bot
     onyxbot_flow: Mapped[bool] = mapped_column(Boolean, default=False)
     # Only ever set to True if system is set to not hard-delete chats
     deleted: Mapped[bool] = mapped_column(Boolean, default=False)

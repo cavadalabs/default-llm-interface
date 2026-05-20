@@ -10,8 +10,8 @@ import { useWebSearchProviders } from "@/lib/webSearch/hooks";
 import { useCreateModal } from "@/refresh-components/contexts/ModalContext";
 import { toast } from "@/hooks/useToast";
 import { SvgGlobe } from "@opal/icons";
-import { SvgOnyxLogo } from "@opal/logos";
 import { MessageCard } from "@opal/components";
+import DefaultLogoMark from "@/refresh-components/DefaultLogoMark";
 import { ADMIN_ROUTES } from "@/lib/admin-routes";
 import {
   WebSearchSetupModal,
@@ -171,7 +171,7 @@ export default function WebSearchPage() {
       if (providerType === "onyx_web_crawler") {
         return {
           id: -1,
-          name: "Onyx Web Crawler",
+          name: "Built-in Web Crawler",
           provider_type: "onyx_web_crawler",
           is_active: true,
           config: null,
@@ -486,7 +486,7 @@ export default function WebSearchPage() {
                       ContentLogo ? (
                         <ContentLogo size={16} />
                       ) : provider.provider_type === "onyx_web_crawler" ? (
-                        <SvgOnyxLogo size={16} />
+                        <DefaultLogoMark size={16} />
                       ) : (
                         <SvgGlobe size={16} />
                       )

@@ -33,7 +33,7 @@ class LogoDisplayStyle(str, Enum):
 
 
 class EnterpriseSettings(BaseModel):
-    """General settings that only apply to the Enterprise Edition of Onyx
+    """General settings that only apply to the Enterprise Edition
 
     NOTE: don't put anything sensitive in here, as this is accessible without auth."""
 
@@ -61,7 +61,7 @@ class EnterpriseSettings(BaseModel):
     custom_help_link_url: str | None = None
     custom_help_link_label: str | None = None
 
-    # hide the "Powered by Onyx" tagline under the sidebar logo
+    # hide the vendor attribution tagline under the sidebar logo
     hide_onyx_branding: bool | None = None
 
     @field_validator("custom_help_link_url")

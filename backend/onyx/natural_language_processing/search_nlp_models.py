@@ -188,7 +188,7 @@ def _cleanup_thread_local(func: Callable) -> Callable:
 WARM_UP_STRINGS = [
     "Onyx is amazing!",
     "Check out our easy deployment guide at",
-    "https://docs.onyx.app/deployment/getting_started/quickstart",
+    "https://www.cavadalabs.com",
 ]
 
 
@@ -367,7 +367,7 @@ class CloudEmbedding:
 
         final_embeddings: list[Embedding] = []
         for text_batch in batch_list(texts, _COHERE_MAX_INPUT_LEN):
-            # Does not use the same tokenizer as the Onyx API server but it's approximately the same
+            # Does not use the same tokenizer as the API server but it's approximately the same
             # empirically it's only off by a very few tokens so it's not a big deal
             response = await client.embed(
                 texts=text_batch,

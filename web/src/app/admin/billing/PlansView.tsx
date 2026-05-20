@@ -25,8 +25,9 @@ import Button from "@/refresh-components/buttons/Button";
 import { Button as OpalButton } from "@opal/components";
 import Text from "@/refresh-components/texts/Text";
 import { Section } from "@/layouts/general-layouts";
+import { DEFAULT_HELP_URL } from "@/lib/branding";
 
-const SALES_URL = "https://www.onyx.app/contact-sales";
+const SALES_URL = DEFAULT_HELP_URL;
 
 // ----------------------------------------------------------------------------
 // Types

@@ -34,8 +34,9 @@ import {
 } from "@/providers/SettingsProvider";
 import UserAvatar from "@/refresh-components/avatars/UserAvatar";
 import useNotifications from "@/hooks/useNotifications";
-import { SvgOnyxLogo } from "@opal/logos";
 import { markdown } from "@opal/utils";
+import DefaultLogoMark from "@/refresh-components/DefaultLogoMark";
+import { DEFAULT_HELP_URL, DEFAULT_VENDOR_SHORT_NAME } from "@/lib/branding";
 
 interface SettingsPopoverProps {
   onUserSettingsClick: () => void;
@@ -128,7 +129,7 @@ function SettingsPopover({
           rounding="sm"
           icon={SvgHelpCircle}
           title="Help & FAQ"
-          href="https://docs.onyx.app"
+          href={DEFAULT_HELP_URL}
           target="_blank"
         />,
         settings?.enterpriseSettings?.custom_help_link_url && (
@@ -176,11 +177,11 @@ function SettingsPopover({
             variant="body"
             color="muted"
             orientation="reverse"
-            icon={SvgOnyxLogo}
+            icon={DefaultLogoMark}
             title={markdown(
-              `[Onyx ${
+              `[${DEFAULT_VENDOR_SHORT_NAME} ${
                 settings?.webVersion ?? "dev"
-              }](https://docs.onyx.app/changelog)`
+              }](${DEFAULT_HELP_URL})`
             )}
           />
         </div>,

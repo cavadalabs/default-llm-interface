@@ -11,8 +11,9 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { transformLinkUri } from "@/lib/utils";
 import { SvgAlertCircle } from "@opal/icons";
-import { SvgOnyxLogo } from "@opal/logos";
 import type { IconProps } from "@opal/types";
+import DefaultLogoMark from "@/refresh-components/DefaultLogoMark";
+import { DEFAULT_APPLICATION_NAME } from "@/lib/branding";
 
 const ALL_USERS_INITIAL_POPUP_FLOW_COMPLETED =
   "allUsersInitialPopupFlowCompleted";
@@ -56,28 +57,30 @@ export function AppPopup() {
   const hasApplicationName = Boolean(
     enterpriseSettings?.application_name?.trim()
   );
+  const applicationName =
+    enterpriseSettings?.application_name?.trim() || DEFAULT_APPLICATION_NAME;
   const hasCustomLogo = Boolean(enterpriseSettings?.use_custom_logo);
   const logoDisplayStyle = enterpriseSettings?.logo_display_style;
 
   // Header icon rules:
-  // - If neither app name nor custom logo exists -> show Onyx icon
+  // - If neither app name nor custom logo exists -> show the default mark
   // - If logo display is "name_only" -> show alert icon
-  // - Otherwise -> show uploaded custom logo (fallback to Onyx icon)
+  // - Otherwise -> show uploaded custom logo (fallback to the default mark)
   const headerIcon =
     !hasApplicationName && !hasCustomLogo
-      ? (props: IconProps) => <SvgOnyxLogo size={24} {...props} />
+      ? (props: IconProps) => <DefaultLogoMark size={24} {...props} />
       : logoDisplayStyle === "name_only"
         ? SvgAlertCircle
         : hasCustomLogo
           ? CustomLogoHeaderIcon
-          : (props: IconProps) => <SvgOnyxLogo size={24} {...props} />;
+          : (props: IconProps) => <DefaultLogoMark size={24} {...props} />;
 
   return (
     <Modal open onOpenChange={() => {}}>
       <Modal.Content width="sm" height="lg">
         <Modal.Header
           icon={headerIcon}
-          title={popupTitle || "Welcome to Onyx!"}
+          title={popupTitle || `Welcome to ${applicationName}!`}
         />
         <Modal.Body>
           <div className="overflow-y-auto text-left">

@@ -243,7 +243,8 @@ export const AppearanceThemeSettings = forwardRef<
               />
             </FormField.Control>
             <FormField.Description>
-              This name will show across the app and replace "Onyx" in the UI.
+              This name will show across the app and replace the default app
+              name in the UI.
             </FormField.Description>
             <FormField.Message
               messages={{ error: errors.application_name as string }}
@@ -468,7 +469,7 @@ export const AppearanceThemeSettings = forwardRef<
                 ref={customHelpLinkUrlInputRef}
                 data-label="custom-help-link-url-input"
                 showClearButton
-                placeholder="https://docs.onyx.app"
+                placeholder="https://www.example.com/help"
                 variant={
                   !enterpriseTier
                     ? "disabled"
@@ -483,8 +484,7 @@ export const AppearanceThemeSettings = forwardRef<
               />
             </FormField.Control>
             <FormField.Description>
-              Add a custom help link in the user menu in addition to the Onyx
-              documentation.
+              Add a custom help link in the user menu.
             </FormField.Description>
             <FormField.Message
               messages={{ error: errors.custom_help_link_url as string }}
@@ -513,19 +513,19 @@ export const AppearanceThemeSettings = forwardRef<
 
       <Disabled
         disabled={!enterpriseTier}
-        tooltip="Hiding Onyx branding is an Enterprise Plan feature."
+        tooltip="Hiding vendor branding is an Enterprise Plan feature."
       >
         <FormField state="idle" className="gap-0">
           <div className="flex justify-between items-center">
             <FormField.Label>
-              Hide Onyx Branding
+              Hide Vendor Branding
               {!enterpriseTier && (
                 <Tag {...planTagProps("enterprise")} size="sm" />
               )}
             </FormField.Label>
             <FormField.Control>
               <Switch
-                aria-label="Hide Onyx Branding"
+                aria-label="Hide Vendor Branding"
                 data-label="hide-onyx-branding-toggle"
                 checked={values.hide_onyx_branding}
                 onCheckedChange={(checked) =>
@@ -536,8 +536,8 @@ export const AppearanceThemeSettings = forwardRef<
             </FormField.Control>
           </div>
           <FormField.Description>
-            Remove &ldquo;powered by Onyx&rdquo; and other Onyx branding
-            presence in the app.
+            Remove the vendor attribution and other platform branding presence
+            in the app.
           </FormField.Description>
         </FormField>
       </Disabled>

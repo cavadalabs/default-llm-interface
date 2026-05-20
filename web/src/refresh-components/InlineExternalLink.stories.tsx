@@ -15,8 +15,8 @@ type Story = StoryObj<typeof InlineExternalLink>;
 
 export const Default: Story = {
   args: {
-    href: "https://docs.onyx.app",
-    children: "Onyx Documentation",
+    href: "https://www.cavadalabs.com",
+    children: "Application Documentation",
   },
 };
 
@@ -32,7 +32,7 @@ export const InContext: Story = {
   render: () => (
     <p className="font-main-content-body text-text-04">
       For more information, visit the{" "}
-      <InlineExternalLink href="https://docs.onyx.app">
+      <InlineExternalLink href="https://www.cavadalabs.com">
         official documentation
       </InlineExternalLink>{" "}
       or check out the{" "}

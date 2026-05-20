@@ -19,6 +19,11 @@ import { useTierAtLeast } from "@/hooks/useTierAtLeast";
 import { Tier } from "@/interfaces/settings";
 import { useSidebarState } from "@/layouts/sidebar-layouts";
 import useScreenSize from "@/hooks/useScreenSize";
+import {
+  DEFAULT_APP_SLOGAN,
+  DEFAULT_HELP_URL,
+  DEFAULT_VENDOR_SHORT_NAME,
+} from "@/lib/branding";
 
 const footerMarkdownComponents = {
   p: ({ children }: { children?: React.ReactNode }) => (
@@ -72,9 +77,9 @@ export default function NRFChrome() {
 
   const customFooterContent =
     settings?.enterpriseSettings?.custom_lower_disclaimer_content ||
-    `[Onyx ${
+    `[${DEFAULT_VENDOR_SHORT_NAME} ${
       settings?.webVersion || "dev"
-    }](https://www.onyx.app/) - Open Source AI Platform`;
+    }](${DEFAULT_HELP_URL}) - ${DEFAULT_APP_SLOGAN}`;
 
   const showModeToggle =
     businessTier &&

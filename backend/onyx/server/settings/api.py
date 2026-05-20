@@ -122,7 +122,7 @@ def fetch_settings(
     )
     general_settings = apply_fn(general_settings)
 
-    # Check if Onyx Craft is enabled for this user (used for server-side redirects)
+    # Check if Build Mode is enabled for this user (used for server-side redirects)
     onyx_craft_enabled_for_user = is_onyx_craft_enabled(user) if user else False
 
     return UserSettings(

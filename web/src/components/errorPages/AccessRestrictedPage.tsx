@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import ErrorPageLayout from "@/components/errorPages/ErrorPageLayout";
 import { Button } from "@opal/components";
-import InlineExternalLink from "@/refresh-components/InlineExternalLink";
 import { logout } from "@/lib/user";
 import { loadStripe } from "@stripe/stripe-js";
 import { NEXT_PUBLIC_CLOUD_ENABLED } from "@/lib/constants";
@@ -13,6 +12,7 @@ import { useSettingsContext } from "@/providers/SettingsProvider";
 import { ApplicationStatus } from "@/interfaces/settings";
 import Text from "@/refresh-components/texts/Text";
 import { SvgLock } from "@opal/icons";
+import { DEFAULT_SUPPORT_EMAIL } from "@/lib/branding";
 
 const linkClassName = "text-action-link-05 hover:text-action-link-06 underline";
 
@@ -63,9 +63,9 @@ export default function AccessRestricted() {
     ? getSeatLimitMessage()
     : showRenewalMessage
       ? NEXT_PUBLIC_CLOUD_ENABLED
-        ? "Your access to Onyx has been temporarily suspended due to a lapse in your subscription."
-        : "Your access to Onyx has been temporarily suspended due to a lapse in your license."
-      : "An Enterprise license is required to use Onyx. Your data is protected and will be available once a license is activated.";
+        ? "Your access has been temporarily suspended due to a lapse in your subscription."
+        : "Your access has been temporarily suspended due to a lapse in your license."
+      : "An Enterprise license is required to use this application. Your data is protected and will be available once a license is activated.";
 
   const handleResubscribe = async () => {
     setIsLoading(true);
@@ -125,8 +125,8 @@ export default function AccessRestricted() {
       ) : NEXT_PUBLIC_CLOUD_ENABLED ? (
         <>
           <Text text03>
-            To reinstate your access and continue benefiting from Onyx&apos;s
-            powerful features, please update your payment information.
+            To reinstate your access and continue using the platform, please
+            update your payment information.
           </Text>
 
           <Text text03>
@@ -156,7 +156,7 @@ export default function AccessRestricted() {
         <>
           <Text text03>
             {hadPreviousLicense
-              ? "To reinstate your access and continue using Onyx, please contact your system administrator to renew your license."
+              ? "To reinstate your access and continue using the application, please contact your system administrator to renew your license."
               : "To get started, please contact your system administrator to obtain an Enterprise license."}
           </Text>
 
@@ -167,8 +167,11 @@ export default function AccessRestricted() {
             </Link>{" "}
             page to {hadPreviousLicense ? "renew" : "activate"} your license,
             sign up through Stripe or reach out to{" "}
-            <a className={linkClassName} href="mailto:support@onyx.app">
-              support@onyx.app
+            <a
+              className={linkClassName}
+              href={`mailto:${DEFAULT_SUPPORT_EMAIL}`}
+            >
+              {DEFAULT_SUPPORT_EMAIL}
             </a>{" "}
             for billing assistance.
           </Text>
@@ -187,14 +190,11 @@ export default function AccessRestricted() {
       )}
 
       <Text text03>
-        Need help? Join our{" "}
-        <InlineExternalLink
-          className={linkClassName}
-          href="https://discord.gg/4NA5SbzrWb"
-        >
-          Discord community
-        </InlineExternalLink>{" "}
-        for support.
+        Need help? Contact{" "}
+        <a className={linkClassName} href={`mailto:${DEFAULT_SUPPORT_EMAIL}`}>
+          {DEFAULT_SUPPORT_EMAIL}
+        </a>
+        .
       </Text>
     </ErrorPageLayout>
   );

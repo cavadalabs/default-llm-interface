@@ -784,6 +784,6 @@ class WebConnector(LoadConnector, SlimConnector):
 
 
 if __name__ == "__main__":
-    connector = WebConnector("https://docs.onyx.app/")
+    connector = WebConnector("https://www.cavadalabs.com/")
     document_batches = connector.load_from_state()
     print(next(document_batches))

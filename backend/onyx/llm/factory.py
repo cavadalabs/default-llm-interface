@@ -50,11 +50,11 @@ def _build_provider_extra_headers(
             )
         }
 
-    # Passing these will put Onyx on the OpenRouter leaderboard
+    # Passing these identifies this deployment to OpenRouter.
     elif provider == LlmProviderNames.OPENROUTER:
         return {
-            "HTTP-Referer": "https://onyx.app",
-            "X-Title": "Onyx",
+            "HTTP-Referer": "https://www.cavadalabs.com",
+            "X-Title": "Default LLM Interface",
         }
 
     return {}

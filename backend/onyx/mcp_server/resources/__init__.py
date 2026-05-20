@@ -1,4 +1,4 @@
-"""Resource registrations for the Onyx MCP server."""
+"""Resource registrations for the MCP server."""
 
 # Import resource modules so decorators execute when the package loads.
 from onyx.mcp_server.resources import document_sets  # noqa: F401

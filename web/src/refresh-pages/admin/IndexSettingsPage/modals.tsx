@@ -4,7 +4,7 @@ import { Formik, useFormikContext } from "formik";
 import * as Yup from "yup";
 import { Button } from "@opal/components";
 import { SvgArrowExchange } from "@opal/icons";
-import { SvgOnyxLogo } from "@opal/logos";
+import DefaultLogoMark from "@/refresh-components/DefaultLogoMark";
 import * as GeneralLayouts from "@/layouts/general-layouts";
 import Modal from "@/refresh-components/Modal";
 import { toast } from "@/hooks/useToast";
@@ -50,7 +50,7 @@ function ModalShell({ provider, isEditing, children }: ModalShellProps) {
         <Modal.Header
           icon={provider.icon}
           moreIcon1={SvgArrowExchange}
-          moreIcon2={SvgOnyxLogo}
+          moreIcon2={DefaultLogoMark}
           title={
             isEditing
               ? `Manage ${provider.displayName}`
@@ -415,7 +415,7 @@ function LiteLLMProviderModal({
         <ApiKeyField provider={provider} />
 
         <ModelSpecFields
-          modelNameSubDescription={`Onyx will connect to this model on your ${provider.displayName} proxy.`}
+          modelNameSubDescription={`The application will connect to this model on your ${provider.displayName} proxy.`}
         />
       </ModalShell>
     </Formik>

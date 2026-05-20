@@ -264,7 +264,7 @@ def enforce_cloud_seat_limit(
     elif reason == SeatBillingDeclineReason.SUBSCRIPTION_INVALID:
         message = (
             "Could not add a new seat: this tenant does not have an active "
-            "subscription. Please contact your Onyx administrator."
+            "subscription. Please contact your administrator."
         )
     else:
         message = "Could not add a new seat (billing declined)."

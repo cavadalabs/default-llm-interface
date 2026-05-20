@@ -153,7 +153,7 @@ const LLMStep = memo(
             <ContentAction
               icon={SvgCpu}
               title="Connect your LLM models"
-              description="Onyx supports both self-hosted models and popular providers."
+              description="Connect self-hosted models or popular hosted providers."
               sizePreset="main-ui"
               variant="section"
               padding="lg"

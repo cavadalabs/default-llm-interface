@@ -23,6 +23,7 @@ import { NEXT_PUBLIC_CLOUD_ENABLED } from "@/lib/constants";
 import { SWR_KEYS } from "@/lib/swr-keys";
 import { useUser } from "@/providers/UserProvider";
 import { LinkButton, MessageCard } from "@opal/components";
+import { DEFAULT_SUPPORT_EMAIL } from "@/lib/branding";
 
 import PlansView from "./PlansView";
 import CheckoutView from "./CheckoutView";
@@ -49,7 +50,7 @@ interface ViewConfig {
 // FooterLinks (inlined)
 // ----------------------------------------------------------------------------
 
-const SUPPORT_EMAIL = "support@onyx.app";
+const SUPPORT_EMAIL = DEFAULT_SUPPORT_EMAIL;
 
 function FooterLinks({
   hasSubscription,

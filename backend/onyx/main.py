@@ -57,6 +57,7 @@ from onyx.configs.app_configs import SYSTEM_RECURSION_LIMIT
 from onyx.configs.app_configs import USER_AUTH_SECRET
 from onyx.configs.app_configs import WEB_DOMAIN
 from onyx.configs.constants import AuthType
+from onyx.configs.constants import ONYX_DEFAULT_APPLICATION_NAME
 from onyx.configs.constants import POSTGRES_WEB_APP_NAME
 from onyx.db.engine.async_sql_engine import get_sqlalchemy_async_engine
 from onyx.db.engine.connection_warmup import warm_up_connections
@@ -303,7 +304,7 @@ def validate_no_vector_db_settings() -> None:
     if ENABLE_CRAFT:
         raise RuntimeError(
             "DISABLE_VECTOR_DB cannot be used with ENABLE_CRAFT. "
-            "Onyx Craft requires background workers for sandbox lifecycle "
+            "Build Mode requires background workers for sandbox lifecycle "
             "management, which are removed in no-vector-DB deployments. "
             "Disable Craft (ENABLE_CRAFT=false) when disabling the vector database."
         )
@@ -432,11 +433,17 @@ def log_http_error(request: Request, exc: Exception) -> JSONResponse:
 
 def get_application(lifespan_override: Lifespan | None = None) -> FastAPI:
     application = FastAPI(
-        title="Onyx Backend",
+        title=f"{ONYX_DEFAULT_APPLICATION_NAME} Backend",
         version=__version__,
-        description="Onyx API for AI-powered chat with search, document indexing, agents, actions, and more",
+        description=(
+            "API for AI-powered chat with search, document indexing, agents, "
+            "actions, and more"
+        ),
         servers=[
-            {"url": f"{WEB_DOMAIN.rstrip('/')}/api", "description": "Onyx API Server"}
+            {
+                "url": f"{WEB_DOMAIN.rstrip('/')}/api",
+                "description": f"{ONYX_DEFAULT_APPLICATION_NAME} API Server",
+            }
         ],
         lifespan=lifespan_override or lifespan,
     )

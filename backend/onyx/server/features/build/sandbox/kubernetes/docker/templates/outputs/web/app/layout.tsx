@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Onyx Craft",
+  title: "Build Mode",
   description: "Crafting your next great idea.",
 };
 

@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 import { motion } from "motion/react";
 import { track, AnalyticsEvent } from "@/lib/analytics";
-import { OnyxLogoTypeIcon } from "@/components/icons/icons";
 import Text from "@/refresh-components/texts/Text";
 import BigButton from "@/app/craft/components/BigButton";
+import { DEFAULT_APPLICATION_NAME } from "@/lib/branding";
 
 interface BuildModeIntroContentProps {
   onClose: () => void;
@@ -32,7 +32,16 @@ export default function BuildModeIntroContent({
         >
           <div className="grid grid-cols-[1fr_auto_1fr] items-end">
             <div className="flex justify-end">
-              <OnyxLogoTypeIcon size={385} className="text-white" />
+              <Text
+                headingH1
+                className="text-8xl! text-white! text-right"
+                style={{
+                  fontFamily: "var(--font-kh-teka)",
+                  fontWeight: 500,
+                }}
+              >
+                {DEFAULT_APPLICATION_NAME}
+              </Text>
             </div>
             <div className="w-8"></div>
             <div className="flex justify-start">

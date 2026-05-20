@@ -32,7 +32,7 @@ async def handle_dm(message: discord.Message) -> None:
     dm_response = (
         "**I can't respond to DMs** :sweat:\n\n"
         f"Please chat with me in a server channel, or join the official "
-        f"[Onyx Discord]({ONYX_DISCORD_URL}) for help!"
+        f"[support]({ONYX_DISCORD_URL}) for help!"
     )
     await message.channel.send(dm_response)
 
@@ -135,8 +135,8 @@ async def handle_registration_command(
         logger.info("Registration successful: %s", guild_name)
         await message.reply(
             ":white_check_mark: **Successfully registered!**\n\n"
-            "This server is now connected to Onyx. "
-            "I'll respond to messages based on your server and channel settings set in Onyx."
+            "This server is now connected. "
+            "I'll respond to messages based on your server and channel settings."
         )
     except RegistrationError as e:
         logger.debug("Registration failed: %s, error=%s", guild_name, e)
@@ -185,7 +185,8 @@ async def _register_guild(
             "Guild %s is already registered to tenant %s", guild_id, existing_tenant
         )
         raise RegistrationError(
-            "This server is already registered.\n\nOnyxBot can only connect one Discord server to one Onyx workspace."
+            "This server is already registered.\n\n"
+            "The Discord bot can only connect one Discord server to one workspace."
         )
 
     context_token = CURRENT_TENANT_ID_CONTEXTVAR.set(tenant_id)
@@ -206,7 +207,7 @@ async def _register_guild(
                     raise RegistrationError(
                         "Registration key not found.\n\n"
                         "The key may have expired or been deleted. "
-                        "Please generate a new one from the Onyx admin panel."
+                        "Please generate a new one from the admin panel."
                     )
 
                 # Check if already used
@@ -214,7 +215,7 @@ async def _register_guild(
                     raise RegistrationError(
                         "This registration key has already been used.\n\n"
                         "Each key can only be used once. "
-                        "Please generate a new key from the Onyx admin panel."
+                        "Please generate a new key from the admin panel."
                     )
 
                 # Update the guild config
@@ -321,7 +322,7 @@ async def handle_sync_channels_command(
             with get_session_with_tenant(tenant_id=tenant_id) as db:
                 if not message.guild:
                     raise SyncChannelsError(
-                        "Server not found. This shouldn't happen. Please contact Onyx support."
+                        "Server not found. This shouldn't happen. Please contact support."
                     )
                 config = get_guild_config_by_discord_id(db, message.guild.id)
                 return config.id if config else None
@@ -330,7 +331,7 @@ async def handle_sync_channels_command(
 
         if not guild_config_id:
             raise SyncChannelsError(
-                "Server config not found. This shouldn't happen. Please contact Onyx support."
+                "Server config not found. This shouldn't happen. Please contact support."
             )
 
         # Perform the sync
@@ -349,7 +350,7 @@ async def handle_sync_channels_command(
             f"* **{added}** new channel(s) added\n"
             f"* **{removed}** deleted channel(s) removed\n"
             f"* **{updated}** channel name(s) updated\n\n"
-            "New channels are disabled by default. Enable them in the Onyx admin panel."
+            "New channels are disabled by default. Enable them in the admin panel."
         )
     except SyncChannelsError as e:
         logger.debug("Sync-channels failed: %s, error=%s", guild_name, e)

@@ -1,4 +1,4 @@
-"""Scheduled Tasks feature for Onyx Craft.
+"""Scheduled Tasks feature for Build Mode.
 
 Internals split across:
 - schedule.py:      pure cron/timezone helpers (croniter + cron-descriptor).

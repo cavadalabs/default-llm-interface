@@ -1942,7 +1942,7 @@ def submit_connector_request(
 ) -> StatusResponse:
     """
     Submit a connector request for Cloud deployments.
-    Tracks via PostHog telemetry and sends email to hello@onyx.app.
+    Tracks via PostHog telemetry and sends email to CavadaLabs support.
     """
     tenant_id = get_current_tenant_id()
     connector_name = request_data.connector_name.strip()
@@ -1969,7 +1969,7 @@ def submit_connector_request(
     # Send email notification (if email is configured)
     if EMAIL_CONFIGURED:
         try:
-            subject = "Onyx Craft Connector Request"
+            subject = "Build Mode Connector Request"
             email_body_text = f"""A new connector request has been submitted:
 
 Connector Name: {connector_name}
@@ -1988,13 +1988,13 @@ Tenant ID: {tenant_id}
 </html>"""
 
             send_email(
-                user_email="hello@onyx.app",
+                user_email="support@cavadalabs.com",
                 subject=subject,
                 html_body=email_body_html,
                 text_body=email_body_text,
             )
             logger.info(
-                "Connector request email sent to hello@onyx.app for connector: %s",
+                "Connector request email sent to support for connector: %s",
                 connector_name,
             )
         except Exception as e:

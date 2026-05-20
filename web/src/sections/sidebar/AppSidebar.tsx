@@ -249,12 +249,12 @@ const MemoizedAppSidebarInner = memo(function AppSidebarInner() {
   // Fetch notifications for build mode intro
   const { notifications, refresh: mutateNotifications } = useNotifications();
 
-  // Check if Onyx Craft is enabled via settings (backed by PostHog feature flag)
+  // Check if Build Mode is enabled via settings (backed by PostHog feature flag)
   // Only explicit true enables the feature; false or undefined = disabled
   const isOnyxCraftEnabled =
     combinedSettings?.settings?.onyx_craft_enabled === true;
 
-  // Find build_mode feature announcement notification (only if Onyx Craft is enabled)
+  // Find build_mode feature announcement notification (only if Build Mode is enabled)
   const buildModeNotification = isOnyxCraftEnabled
     ? notifications?.find(
         (n) =>

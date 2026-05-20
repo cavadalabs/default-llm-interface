@@ -860,7 +860,7 @@ const AppInputBar = React.memo(
                           : isRecording
                             ? "Listening..."
                             : isVoicePlaybackActive
-                              ? "Onyx is speaking..."
+                              ? "Voice response is playing..."
                               : isSearchMode
                                 ? "Search connected sources"
                                 : "How can I help you today?"

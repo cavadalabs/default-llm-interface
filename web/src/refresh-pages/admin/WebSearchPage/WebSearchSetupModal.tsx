@@ -3,8 +3,8 @@
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { SvgArrowExchange } from "@opal/icons";
-import { SvgOnyxLogo } from "@opal/logos";
 import { Button } from "@opal/components";
+import DefaultLogoMark from "@/refresh-components/DefaultLogoMark";
 import Modal from "@/refresh-components/Modal";
 import SimpleLoader from "@/refresh-components/loaders/SimpleLoader";
 import { useModalClose } from "@/refresh-components/contexts/ModalContext";
@@ -216,7 +216,7 @@ export function WebSearchSetupModal({ state }: WebSearchSetupModalProps) {
               <Modal.Header
                 icon={icon}
                 moreIcon1={SvgArrowExchange}
-                moreIcon2={SvgOnyxLogo}
+                moreIcon2={DefaultLogoMark}
                 title={
                   isEditing
                     ? `Configure ${providerLabel}`

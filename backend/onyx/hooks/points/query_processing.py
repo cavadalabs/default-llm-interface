@@ -65,9 +65,7 @@ class QueryProcessingSpec(HookPointSpec):
         "The query will be blocked and the user will see an error message."
     )
     default_fail_strategy = HookFailStrategy.HARD
-    docs_url = (
-        "https://docs.onyx.app/admins/advanced_configs/hook_extensions#query-processing"
-    )
+    docs_url = "https://www.cavadalabs.com#query-processing"
 
     payload_model = QueryProcessingPayload
     response_model = QueryProcessingResponse

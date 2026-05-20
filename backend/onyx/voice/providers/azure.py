@@ -527,7 +527,7 @@ class AzureVoiceProvider(VoiceProviderInterface):
             "Ocp-Apim-Subscription-Key": self.api_key,
             "Content-Type": "application/ssml+xml",
             "X-Microsoft-OutputFormat": "audio-16khz-128kbitrate-mono-mp3",
-            "User-Agent": "Onyx",
+            "User-Agent": "Default LLM Interface",
         }
 
         with traced_llm_call(

@@ -6,8 +6,9 @@ import Text from "@/refresh-components/texts/Text";
 import Truncated from "@/refresh-components/texts/Truncated";
 import { ensureHrefProtocol } from "@/lib/utils";
 import { cn } from "@opal/utils";
-import { SvgOnyxLogo } from "@opal/logos";
 import MinimalMarkdown from "@/components/chat/MinimalMarkdown";
+import DefaultLogoMark from "@/refresh-components/DefaultLogoMark";
+import { DEFAULT_APPLICATION_NAME } from "@/lib/branding";
 
 const previewMarkdownComponents = {
   p: ({ children }) => (
@@ -68,16 +69,16 @@ export interface PreviewProps {
 
 function PreviewLogo({
   logoSrc,
-  forceOnyxIcon,
+  forceDefaultIcon,
   size,
   className,
 }: {
   logoSrc?: string;
-  forceOnyxIcon?: boolean;
+  forceDefaultIcon?: boolean;
   size: number;
   className?: string;
 }) {
-  return logoSrc && !forceOnyxIcon ? (
+  return logoSrc && !forceDefaultIcon ? (
     <img
       src={logoSrc}
       alt="Logo"
@@ -89,7 +90,7 @@ function PreviewLogo({
       className={cn("shrink-0 rounded-full", className)}
     />
   ) : (
-    <SvgOnyxLogo size={size} className={cn("shrink-0", className)} />
+    <DefaultLogoMark size={size} className={className} />
   );
 }
 
@@ -125,7 +126,7 @@ function PreviewStart({
               <PreviewLogo
                 logoSrc={logoSrc}
                 size={16}
-                forceOnyxIcon={
+                forceDefaultIcon={
                   logoDisplayStyle === "logo_and_name" &&
                   !applicationDisplayName
                 }
@@ -134,7 +135,7 @@ function PreviewStart({
             {(logoDisplayStyle === "logo_and_name" ||
               logoDisplayStyle === "name_only") && (
               <Truncated mainUiAction text04 nowrap>
-                {applicationDisplayName || "Onyx"}
+                {applicationDisplayName || DEFAULT_APPLICATION_NAME}
               </Truncated>
             )}
           </div>

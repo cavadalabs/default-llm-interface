@@ -873,7 +873,7 @@ function ChatPreferencesSettings() {
         <Card>
           <InputHorizontal
             title="Default Model"
-            description="This model will be used by Onyx by default in your chats."
+            description="This model will be used by the application by default in your chats."
             withLabel
           >
             <LLMPopover
@@ -986,7 +986,7 @@ function ChatPreferencesSettings() {
         <Card>
           <InputHorizontal
             title="Reference Stored Memories"
-            description="Let Onyx reference stored memories in chats."
+            description="Let the application reference stored memories in chats."
             withLabel
           >
             <Switch
@@ -999,7 +999,7 @@ function ChatPreferencesSettings() {
           </InputHorizontal>
           <InputHorizontal
             title="Update Memories"
-            description="Let Onyx generate and update stored memories."
+            description="Let the application generate and update stored memories."
             withLabel
           >
             <Switch
@@ -1316,7 +1316,7 @@ function AccountsAccessSettings() {
               Any application using the token{" "}
               <Text className="font-bold!">{tokenToDelete.name}</Text>{" "}
               <Text secondaryMono>({tokenToDelete.token_display})</Text> will
-              lose access to Onyx. This action cannot be undone.
+              lose access to the application. This action cannot be undone.
             </Text>
             <Text>Are you sure you want to revoke this token?</Text>
           </Section>
@@ -1646,7 +1646,8 @@ function FederatedConnectorCard({
         >
           <Section gap={0.5} alignItems="start">
             <Text>
-              Onyx will no longer be able to access or search content from your{" "}
+              The application will no longer be able to access or search content
+              from your{" "}
               <Text className="font-bold!">{sourceMetadata.displayName}</Text>{" "}
               account.
             </Text>

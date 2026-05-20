@@ -4,7 +4,7 @@ import { markdown } from "@opal/utils";
 import { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { SvgOnyxLogo } from "@opal/logos";
+import DefaultLogoMark from "@/refresh-components/DefaultLogoMark";
 import Modal from "@/refresh-components/Modal";
 import ConfirmationModalLayout from "@/refresh-components/layouts/ConfirmationModalLayout";
 import InputComboBoxField from "@/refresh-components/form/InputComboBoxField";
@@ -191,7 +191,7 @@ export function VoiceProviderSetupModal({
               <Modal.Header
                 icon={detail.icon}
                 moreIcon1={SvgArrowExchange}
-                moreIcon2={SvgOnyxLogo}
+                moreIcon2={DefaultLogoMark}
                 title={
                   isEditing
                     ? `Configure ${detail.label}`
@@ -206,7 +206,7 @@ export function VoiceProviderSetupModal({
                     <InputVertical
                       title="Target URI"
                       subDescription={markdown(
-                        "Paste the endpoint shown in [Azure Portal (Keys and Endpoint)](https://portal.azure.com/). Onyx extracts the speech region from this URL. Examples: `https://westus.api.cognitive.microsoft.com/` or `https://westus.tts.speech.microsoft.com/`."
+                        "Paste the endpoint shown in [Azure Portal (Keys and Endpoint)](https://portal.azure.com/). The application extracts the speech region from this URL. Examples: `https://westus.api.cognitive.microsoft.com/` or `https://westus.tts.speech.microsoft.com/`."
                       )}
                       withLabel="target_uri"
                     >
@@ -250,7 +250,7 @@ export function VoiceProviderSetupModal({
                       {(detail.ttsModels?.length ?? 0) > 1 && (
                         <InputVertical
                           title="Default Model"
-                          subDescription="This model will be used by Onyx by default for text-to-speech."
+                          subDescription="This model will be used by the application by default for text-to-speech."
                           withLabel="tts_model"
                         >
                           <InputSelectField name="tts_model">

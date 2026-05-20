@@ -64,9 +64,7 @@ class DocumentPushSpec(HookPointSpec):
     default_timeout_seconds = 30.0
     fail_hard_description = "The indexing batch will fail."
     default_fail_strategy = HookFailStrategy.SOFT
-    docs_url = (
-        "https://docs.onyx.app/admins/advanced_configs/hook_extensions#document-push"
-    )
+    docs_url = "https://www.cavadalabs.com#document-push"
 
     payload_model = DocumentPushPayload
     response_model = DocumentPushResponse

@@ -61,7 +61,7 @@ def set_new_search_settings(
     if MULTI_TENANT and search_settings_new.enable_contextual_rag:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Contextual RAG disabled in Onyx Cloud",
+            detail="Contextual RAG is disabled in this Cloud environment",
         )
 
     # Validate cloud provider exists or create new LiteLLM provider.
@@ -237,7 +237,7 @@ def update_saved_search_settings(
     if MULTI_TENANT and search_settings.enable_contextual_rag:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Contextual RAG disabled in Onyx Cloud",
+            detail="Contextual RAG is disabled in this Cloud environment",
         )
 
     validate_contextual_rag_model(

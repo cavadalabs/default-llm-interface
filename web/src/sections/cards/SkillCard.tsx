@@ -8,6 +8,7 @@ import { CardItemLayout } from "@/layouts/general-layouts";
 import { Interactive } from "@opal/core";
 import { Card } from "@/refresh-components/cards";
 import { useSettingsContext } from "@/providers/SettingsProvider";
+import { DEFAULT_APPLICATION_NAME } from "@/lib/branding";
 
 export type SkillCardSource = "builtin" | "custom";
 
@@ -37,7 +38,8 @@ export interface SkillCardProps {
 
 export default function SkillCard({ item, onClick }: SkillCardProps) {
   const { enterpriseSettings } = useSettingsContext();
-  const appName = enterpriseSettings?.application_name || "Onyx";
+  const appName =
+    enterpriseSettings?.application_name || DEFAULT_APPLICATION_NAME;
 
   const handleClick = useCallback(() => {
     onClick?.(item);

@@ -37,32 +37,32 @@ def _build_copy(
     expires_str = expires_at.strftime("%Y-%m-%d")
     if stage == ExpiryWarningStage.T_30D:
         return (
-            f"Onyx license expires {expires_str}",
+            f"Application license expires {expires_str}",
             "Your license will expire in approximately 30 days. Contact your "
-            "Onyx representative to renew.",
-            "Action required: Onyx license expires in ~30 days",
+            "CavadaLabs representative to renew.",
+            "Action required: application license expires in ~30 days",
         )
     if stage == ExpiryWarningStage.T_14D:
         return (
-            f"Onyx license expires {expires_str}",
+            f"Application license expires {expires_str}",
             "Your license will expire in approximately 2 weeks. Renewal must "
             "be completed soon to avoid service interruption.",
-            "Action required: Onyx license expires in ~2 weeks",
+            "Action required: application license expires in ~2 weeks",
         )
     if stage == ExpiryWarningStage.T_1D:
         return (
-            f"Onyx license expires tomorrow ({expires_str})",
+            f"Application license expires tomorrow ({expires_str})",
             "Your license expires within 24 hours. Renew immediately to avoid "
             "service interruption.",
-            "URGENT: Onyx license expires within 24 hours",
+            "URGENT: application license expires within 24 hours",
         )
     if stage == ExpiryWarningStage.GRACE:
         return (
-            f"Onyx license expired — {grace_days_remaining} grace days remaining",
+            f"Application license expired — {grace_days_remaining} grace days remaining",
             f"Your license expired on {expires_str}. You have "
             f"{grace_days_remaining} day(s) of grace access remaining before "
             "the instance is gated. Renew now.",
-            f"Onyx license expired — {grace_days_remaining} grace days remaining",
+            f"Application license expired — {grace_days_remaining} grace days remaining",
         )
     raise ValueError(f"Unsupported stage for notification copy: {stage}")
 

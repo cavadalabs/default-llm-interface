@@ -1,3 +1,5 @@
+import { DEFAULT_APP_SLOGAN, DEFAULT_HELP_URL } from "@/lib/branding";
+
 export const IS_DEV = process.env.NODE_ENV === "development";
 
 export enum AuthType {
@@ -13,7 +15,8 @@ export const HOST_URL = process.env.WEB_DOMAIN || "http://localhost:3000";
 export const INTERNAL_URL = process.env.INTERNAL_URL || "http://localhost:8080";
 
 // Documentation URLs
-export const DOCS_BASE_URL = "https://docs.onyx.app";
+export const DOCS_BASE_URL =
+  process.env.NEXT_PUBLIC_DOCS_BASE_URL || DEFAULT_HELP_URL;
 export const DOCS_ADMINS_PATH = `${DOCS_BASE_URL}/admins`;
 
 export const MCP_INTERNAL_URL =
@@ -136,6 +139,6 @@ export const DEFAULT_LOGO_SIZE_PX = 24;
 export const DEFAULT_CONTEXT_TOKENS = 120_000;
 export const MAX_CHUNKS_FED_TO_CHAT = 25;
 
-export const APP_SLOGAN = "Open Source AI Platform";
+export const APP_SLOGAN = DEFAULT_APP_SLOGAN;
 
 export const DEFAULT_PAGE_SIZE = 10;

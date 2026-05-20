@@ -344,7 +344,7 @@ class ScimResourceType(BaseModel):
 
 # ---------------------------------------------------------------------------
 # Admin API Schemas (Onyx-internal, for SCIM token management)
-# These are NOT part of the SCIM protocol. They power the Onyx admin UI
+# These are NOT part of the SCIM protocol. They power the admin UI
 # where admins create/revoke the bearer tokens that IdPs use to authenticate.
 # ---------------------------------------------------------------------------
 

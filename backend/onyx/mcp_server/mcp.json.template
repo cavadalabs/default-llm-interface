@@ -1,7 +1,7 @@
 {
     "mcpServers": {
-      "Onyx": {
-        "url": "https://cloud.onyx.app/mcp",
+      "Default LLM Interface": {
+        "url": "https://your-instance.example.com/mcp",
         "headers": {
           "Authorization": "Bearer [YOUR PAT OR API KEY HERE]"
         }

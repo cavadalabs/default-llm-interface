@@ -56,8 +56,8 @@ export default function NotAllowedModal({
                 permissions.
                 <br />
                 <br />
-                Luckily, you can create a new Onyx account to become an admin
-                and craft with your own data!
+                Luckily, you can create a new application account to become an
+                admin and craft with your own data!
               </Text>
             </div>
           </div>

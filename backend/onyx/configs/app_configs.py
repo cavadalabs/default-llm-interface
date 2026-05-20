@@ -29,7 +29,7 @@ APP_API_PREFIX = os.environ.get("API_PREFIX", "")
 # Certain services need to make HTTP requests to the API server, such as the MCP server and Discord bot
 API_SERVER_PROTOCOL = os.environ.get("API_SERVER_PROTOCOL", "http")
 API_SERVER_HOST = os.environ.get("API_SERVER_HOST", "127.0.0.1")
-# This override allows self-hosting the MCP server with Onyx Cloud backend.
+# This override allows self-hosting the MCP server with Cloud backend.
 API_SERVER_URL_OVERRIDE_FOR_HTTP_REQUESTS = os.environ.get(
     "API_SERVER_URL_OVERRIDE_FOR_HTTP_REQUESTS"
 )
@@ -1043,7 +1043,7 @@ DISABLE_TELEMETRY = os.environ.get("DISABLE_TELEMETRY", "").lower() == "true"
 # Braintrust Configuration
 #####
 # Braintrust project name
-BRAINTRUST_PROJECT = os.environ.get("BRAINTRUST_PROJECT", "Onyx")
+BRAINTRUST_PROJECT = os.environ.get("BRAINTRUST_PROJECT", "Default LLM Interface")
 # Braintrust API key - if provided, Braintrust tracing will be enabled
 BRAINTRUST_API_KEY = os.environ.get("BRAINTRUST_API_KEY") or ""
 # Maximum concurrency for Braintrust evaluations
@@ -1064,7 +1064,7 @@ SCHEDULED_EVAL_DATASET_NAMES = [
 ]
 # Email address to use for search permissions during scheduled evals
 SCHEDULED_EVAL_PERMISSIONS_EMAIL = os.environ.get(
-    "SCHEDULED_EVAL_PERMISSIONS_EMAIL", "roshan@onyx.app"
+    "SCHEDULED_EVAL_PERMISSIONS_EMAIL", "support@cavadalabs.com"
 )
 # Braintrust project name to use for scheduled evals
 SCHEDULED_EVAL_PROJECT = os.environ.get("SCHEDULED_EVAL_PROJECT", "st-dev")
@@ -1134,8 +1134,8 @@ AUTO_LLM_UPDATE_INTERVAL_SECONDS = int(
 #####
 # NOTE: this should only be enabled if you have purchased an enterprise license.
 # if you're interested in an enterprise license, please reach out to us at
-# founders@onyx.app OR message Chris Weaver or Yuhong Sun in the Onyx
-# Discord community https://discord.gg/4NA5SbzrWb
+# support@cavadalabs.com
+# support channel
 ENTERPRISE_EDITION_ENABLED = (
     os.environ.get("ENABLE_PAID_ENTERPRISE_EDITION_FEATURES", "").lower() == "true"
 )

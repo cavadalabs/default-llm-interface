@@ -45,11 +45,11 @@ import {
   SvgUsers,
   SvgX,
 } from "@opal/icons";
-import SvgOnyxLogo from "@opal/logos/onyx-logo";
 import { Card, EmptyMessageCard } from "@opal/components";
 import { ContentAction } from "@opal/layouts";
 import AgentAvatar from "@/refresh-components/avatars/AgentAvatar";
 import SimpleLoader from "@/refresh-components/loaders/SimpleLoader";
+import DefaultLogoMark from "@/refresh-components/DefaultLogoMark";
 import useUsers from "@/hooks/useUsers";
 import { toast } from "@/hooks/useToast";
 import { UserRole } from "@/lib/types";
@@ -119,12 +119,12 @@ export function APIKeyField({
 // ─── APIBaseField ───────────────────────────────────────────────────────────
 
 /**
- * Sentence appended to an API Base URL `subDescription` when Onyx is detected
+ * Sentence appended to an API Base URL `subDescription` when the application is detected
  * to be running inside a container — explains why the default uses
  * `host.docker.internal`.
  */
 export const CONTAINERIZED_HOST_NOTE =
-  "With Onyx running in a container, `host.docker.internal` acts like `localhost` inside the container.";
+  "With the application running in a container, `host.docker.internal` acts like `localhost` inside the container.";
 
 export interface APIBaseFieldProps {
   optional?: boolean;
@@ -786,7 +786,7 @@ function ModalWrapperInner({
           <Modal.Header
             icon={providerIcon}
             moreIcon1={SvgArrowExchange}
-            moreIcon2={SvgOnyxLogo}
+            moreIcon2={DefaultLogoMark}
             title={title}
             description={description}
             onClose={onClose}

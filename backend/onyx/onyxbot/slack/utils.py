@@ -138,7 +138,7 @@ def check_message_limit() -> bool:
         _ONYX_BOT_COUNT_START_TIME = time.time()
     if (_ONYX_BOT_MESSAGE_COUNT + 1) > ONYX_BOT_RESPONSE_LIMIT_PER_TIME_PERIOD:
         logger.error(
-            "OnyxBot has reached the message limit %s"
+            "Assistant Bot has reached the message limit %s"
             " for the time period %s seconds."
             " These limits are configurable in backend/onyx/configs/onyxbot_configs.py",
             ONYX_BOT_RESPONSE_LIMIT_PER_TIME_PERIOD,
@@ -226,8 +226,8 @@ def _build_error_block(error_message: str) -> Block:
     the error without completely breaking
     """
     display_text = (
-        "There was an error displaying all of the Onyx answers."
-        f" Please let an admin or an onyx developer know. Error: {error_message}"
+        "There was an error displaying all of the answers."
+        f" Please let an admin or developer know. Error: {error_message}"
     )
     return SectionBlock(text=display_text)
 
@@ -605,16 +605,16 @@ def read_slack_thread(
                 is_onyx_bot_response = True
 
             if is_onyx_bot_response:
-                # OnyxBot response
+                # Assistant Bot response
                 message_type = MessageType.ASSISTANT
                 user_sem_id = "Assistant"
 
-                # OnyxBot responses have both text and blocks
+                # Assistant Bot responses have both text and blocks
                 # The useful content is in the blocks, specifically the first block unless there are
                 # auto-detected filters
                 blocks = reply.get("blocks")
                 if not blocks:
-                    logger.warning("OnyxBot response has no blocks: %s", reply)
+                    logger.warning("Assistant Bot response has no blocks: %s", reply)
                     continue
 
                 message = blocks[0].get("text", {}).get("text")
@@ -625,7 +625,7 @@ def read_slack_thread(
                     if len(blocks) < 2:
                         logger.warning("Only filter blocks found: %s", reply)
                         continue
-                    # This is the OnyxBot answer format, if there is a change to how we respond,
+                    # This is the Assistant Bot answer format, if there is a change to how we respond,
                     # this will need to be updated to get the correct "answer" portion
                     message = reply["blocks"][1].get("text", {}).get("text")
             else:

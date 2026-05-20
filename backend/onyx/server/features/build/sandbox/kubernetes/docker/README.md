@@ -1,6 +1,6 @@
 # Sandbox Container Image
 
-This directory contains the Dockerfile and resources for building the Onyx Craft sandbox container image.
+This directory contains the Dockerfile and resources for building the Build Mode sandbox container image.
 
 ## Directory Structure
 

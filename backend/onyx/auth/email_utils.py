@@ -163,7 +163,7 @@ def build_html_email(
 ) -> str:
     community_link_fragment = ""
     if application_name == ONYX_DEFAULT_APPLICATION_NAME:
-        community_link_fragment = f'<br>Have questions? Join our Discord community <a href="{ONYX_DISCORD_URL}">here</a>.'
+        community_link_fragment = f'<br>Have questions? Contact support <a href="{ONYX_DISCORD_URL}">here</a>.'
 
     if cta_text and cta_link:
         cta_block = f'<a class="cta-button" href="{cta_link}">{cta_text}</a>'
@@ -210,7 +210,7 @@ def send_email_with_sendgrid(
     mail_from: str = EMAIL_FROM,
     inline_png: tuple[str, bytes] | None = None,
 ) -> None:
-    from_email = Email(mail_from) if mail_from else Email("noreply@onyx.app")
+    from_email = Email(mail_from) if mail_from else Email("noreply@cavadalabs.com")
     to_email = To(user_email)
 
     mail = Mail(
@@ -261,7 +261,7 @@ def send_email_with_smtplib(
     if mail_from:
         msg["From"] = mail_from
     msg["Date"] = formatdate(localtime=True)
-    msg["Message-ID"] = make_msgid(domain="onyx.app")
+    msg["Message-ID"] = make_msgid(domain="cavadalabs.com")
 
     # Add text part first (lowest priority)
     text_part = MIMEText(text_body, "plain")
@@ -317,7 +317,7 @@ def send_subscription_cancellation_email(user_email: str) -> None:
         "<p>If you change your mind, you can always come back!</p>"
     )
     cta_text = "Renew Subscription"
-    cta_link = "https://www.onyx.app/pricing"
+    cta_link = "https://www.cavadalabs.com"
     html_content = build_html_email(
         application_name,
         heading,
@@ -328,7 +328,7 @@ def send_subscription_cancellation_email(user_email: str) -> None:
     text_content = (
         "We're sorry to see you go.\n"
         "Your subscription has been canceled and will end on your next billing date.\n"
-        "If you change your mind, visit https://www.onyx.app/pricing"
+        "If you change your mind, contact your administrator or CavadaLabs support."
     )
     send_email(
         user_email,
