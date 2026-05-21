@@ -1,7 +1,8 @@
 # Customer Customization Guide
 
-This repository is the CavadaLabs SRL white-label base for a customer-specific
-LLM interface. Use this checklist when preparing a branded build for a client.
+This repository is the CavadaLabs SRL AI interface and white-label base for
+customer-specific builds. Use this checklist when preparing a branded build for
+a client.
 
 ## Goals
 
@@ -51,6 +52,22 @@ Environment overrides currently supported:
 - `NEXT_PUBLIC_SUPPORT_EMAIL`
 - `NEXT_PUBLIC_DOCS_BASE_URL`
 - `NEXT_PUBLIC_APP_DOMAIN`
+
+## Default LLM Provider
+
+This CavadaLabs branch configures a default OpenAI-compatible LLM during backend
+setup from [backend/onyx/setup.py](/Users/davidcavada/dev/cavadalabs/default-llm-interface/backend/onyx/setup.py).
+
+Current defaults:
+
+- `CAVADALABS_DEFAULT_LLM_PROVIDER_NAME`: `CavadaLabs Qwen Vision`
+- `CAVADALABS_DEFAULT_LLM_API_BASE`: `http://192.168.0.20:8001/v1`
+- `CAVADALABS_DEFAULT_LLM_MODEL`: `qwen3.6-35b-vision`
+- `CAVADALABS_DEFAULT_LLM_API_KEY`: unset
+- `CAVADALABS_DEFAULT_LLM_ENABLED`: `true`
+
+For a customer build, replace these values or disable the auto-provider and
+configure the provider through `/admin/configuration/language-models`.
 
 ## Runtime Appearance Settings
 
@@ -192,4 +209,3 @@ Manual UI check:
 - Error pages do not mention upstream branding.
 - Billing/support links point to customer/CavadaLabs destinations.
 - First-visit notice and consent text are customer-approved.
-

@@ -1,6 +1,6 @@
-# Default LLM Interface
+# CavadaLabs AI
 
-这是 CavadaLabs SRL 的专有 white-label LLM 界面基础项目。
+这是 CavadaLabs SRL 的专有 AI 助手界面项目。
 
 本仓库用于为客户交付可定制的 AI 助手界面。默认界面保持中性品牌；
 为客户定制时，请先阅读：

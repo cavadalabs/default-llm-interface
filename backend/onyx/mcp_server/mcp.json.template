@@ -1,6 +1,6 @@
 {
     "mcpServers": {
-      "Default LLM Interface": {
+      "CavadaLabs AI": {
         "url": "https://your-instance.example.com/mcp",
         "headers": {
           "Authorization": "Bearer [YOUR PAT OR API KEY HERE]"

@@ -27,10 +27,10 @@ logger = setup_logger()
 # (python -m onyx.mcp_server_main, uvicorn onyx.mcp_server.api:mcp_app, etc.).
 set_is_ee_based_on_env_variable()
 
-logger.info("Creating Default LLM Interface MCP Server...")
+logger.info("Creating CavadaLabs AI MCP Server...")
 
 mcp_server = FastMCP(
-    name="Default LLM Interface MCP Server",
+    name="CavadaLabs AI MCP Server",
     version="1.0.0",
     auth=OnyxTokenVerifier(),
 )
@@ -79,7 +79,7 @@ def create_mcp_fastapi_app() -> FastAPI:
             await shutdown_http_client()
 
     app = FastAPI(
-        title="Default LLM Interface MCP Server",
+        title="CavadaLabs AI MCP Server",
         description="HTTP POST transport with bearer auth delegated to API /me",
         version="1.0.0",
         lifespan=combined_lifespan,

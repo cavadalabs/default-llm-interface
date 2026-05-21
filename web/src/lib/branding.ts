@@ -1,7 +1,7 @@
-export const DEFAULT_APPLICATION_NAME = "Default LLM Interface";
+export const DEFAULT_APPLICATION_NAME = "CavadaLabs AI";
 export const DEFAULT_APPLICATION_DESCRIPTION =
-  "AI assistant for your documents";
-export const DEFAULT_APP_SLOGAN = "AI assistant platform";
+  "Assistente AI per documenti e knowledge base";
+export const DEFAULT_APP_SLOGAN = "AI workspace by CavadaLabs";
 
 export const DEFAULT_VENDOR_NAME = "CavadaLabs SRL";
 export const DEFAULT_VENDOR_SHORT_NAME = "CavadaLabs";

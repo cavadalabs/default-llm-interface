@@ -1,6 +1,6 @@
-# Web Frontend
+# CavadaLabs AI Web Frontend
 
-Next.js frontend for the CavadaLabs SRL Default LLM Interface.
+Next.js frontend for CavadaLabs AI.
 
 ## Development
 

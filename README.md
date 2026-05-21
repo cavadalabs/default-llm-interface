@@ -1,13 +1,11 @@
-# Default LLM Interface
+# CavadaLabs AI
 
-Proprietary CavadaLabs SRL white-label base for customer-specific LLM
-interfaces.
+Proprietary CavadaLabs SRL AI assistant interface.
 
-This repository contains a customizable AI assistant interface with chat,
+This repository contains the CavadaLabs AI assistant interface with chat,
 connectors, search/RAG, agents, actions, model-provider configuration, and admin
-tools. It is maintained as an internal CavadaLabs delivery base: the default UI
-is intentionally neutral, and customer branding should be applied only at the
-documented customization points.
+tools. It is also maintained as an internal CavadaLabs delivery base for
+customer-specific builds.
 
 ## Ownership
 
@@ -38,6 +36,26 @@ The primary frontend defaults live in:
 Do not rename internal `onyx` package paths, database keys, queue names, or type
 names as part of a branding pass. Those are technical identifiers and require a
 separate refactor plan.
+
+## Default Local Model
+
+This branch auto-configures the CavadaLabs default LLM provider during backend
+setup:
+
+- Provider type: OpenAI-compatible
+- Provider name: `CavadaLabs Qwen Vision`
+- API base: `http://192.168.0.20:8001/v1`
+- Model: `qwen3.6-35b-vision`
+
+Override with:
+
+```bash
+CAVADALABS_DEFAULT_LLM_ENABLED=true
+CAVADALABS_DEFAULT_LLM_PROVIDER_NAME="CavadaLabs Qwen Vision"
+CAVADALABS_DEFAULT_LLM_API_BASE=http://192.168.0.20:8001/v1
+CAVADALABS_DEFAULT_LLM_MODEL=qwen3.6-35b-vision
+CAVADALABS_DEFAULT_LLM_API_KEY=
+```
 
 ## Local Development
 

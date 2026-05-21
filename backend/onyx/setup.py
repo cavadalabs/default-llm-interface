@@ -1,3 +1,4 @@
+import os
 import time
 
 from sqlalchemy.orm import Session
@@ -28,6 +29,7 @@ from onyx.db.index_attempt import expire_index_attempts
 from onyx.db.llm import fetch_default_llm_model
 from onyx.db.llm import fetch_existing_llm_provider
 from onyx.db.llm import update_default_provider
+from onyx.db.llm import update_default_vision_provider
 from onyx.db.llm import upsert_llm_provider
 from onyx.db.search_settings import get_active_search_settings
 from onyx.db.search_settings import get_current_search_settings
@@ -60,6 +62,20 @@ from shared_configs.configs import MODEL_SERVER_PORT
 from shared_configs.configs import MULTI_TENANT
 
 logger = setup_logger()
+
+CAVADALABS_DEFAULT_LLM_ENABLED = (
+    os.environ.get("CAVADALABS_DEFAULT_LLM_ENABLED", "true").lower() == "true"
+)
+CAVADALABS_DEFAULT_LLM_PROVIDER_NAME = os.environ.get(
+    "CAVADALABS_DEFAULT_LLM_PROVIDER_NAME", "CavadaLabs Qwen Vision"
+)
+CAVADALABS_DEFAULT_LLM_API_BASE = os.environ.get(
+    "CAVADALABS_DEFAULT_LLM_API_BASE", "http://192.168.0.20:8001/v1"
+)
+CAVADALABS_DEFAULT_LLM_MODEL = os.environ.get(
+    "CAVADALABS_DEFAULT_LLM_MODEL", "qwen3.6-35b-vision"
+)
+CAVADALABS_DEFAULT_LLM_API_KEY = os.environ.get("CAVADALABS_DEFAULT_LLM_API_KEY")
 
 
 def setup_onyx(
@@ -238,6 +254,54 @@ def setup_postgres(db_session: Session) -> None:
     create_initial_public_credential(db_session)
     create_initial_default_connector(db_session)
     associate_default_cc_pair(db_session)
+
+    if CAVADALABS_DEFAULT_LLM_ENABLED:
+        logger.notice("Setting up CavadaLabs default OpenAI-compatible LLM.")
+        existing = fetch_existing_llm_provider(
+            name=CAVADALABS_DEFAULT_LLM_PROVIDER_NAME, db_session=db_session
+        )
+        model_req = LLMProviderUpsertRequest(
+            id=existing.id if existing else None,
+            name=CAVADALABS_DEFAULT_LLM_PROVIDER_NAME,
+            provider=LlmProviderNames.OPENAI_COMPATIBLE,
+            api_key=CAVADALABS_DEFAULT_LLM_API_KEY,
+            api_base=CAVADALABS_DEFAULT_LLM_API_BASE,
+            api_version=None,
+            custom_config=None,
+            is_public=True,
+            groups=[],
+            model_configurations=[
+                ModelConfigurationUpsertRequest(
+                    name=CAVADALABS_DEFAULT_LLM_MODEL,
+                    is_visible=True,
+                    max_input_tokens=42752,
+                    supports_image_input=True,
+                    supports_reasoning=True,
+                    display_name="Qwen3.6 35B Vision",
+                )
+            ],
+            api_key_changed=True,
+        )
+        try:
+            new_llm_provider = upsert_llm_provider(
+                llm_provider_upsert_request=model_req, db_session=db_session
+            )
+        except ValueError as e:
+            logger.warning(
+                "Failed to upsert CavadaLabs LLM provider during setup: %s", e
+            )
+        else:
+            update_default_provider(
+                provider_id=new_llm_provider.id,
+                model_name=CAVADALABS_DEFAULT_LLM_MODEL,
+                db_session=db_session,
+            )
+            update_default_vision_provider(
+                provider_id=new_llm_provider.id,
+                vision_model=CAVADALABS_DEFAULT_LLM_MODEL,
+                db_session=db_session,
+            )
+            return
 
     if GEN_AI_API_KEY and fetch_default_llm_model(db_session) is None:
         # Only for dev flows

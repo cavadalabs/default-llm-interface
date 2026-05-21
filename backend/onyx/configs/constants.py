@@ -4,7 +4,7 @@ import socket
 from enum import auto
 from enum import Enum
 
-ONYX_DEFAULT_APPLICATION_NAME = "Default LLM Interface"
+ONYX_DEFAULT_APPLICATION_NAME = "CavadaLabs AI"
 ONYX_DISCORD_URL = "https://www.cavadalabs.com"
 ONYX_UTM_SOURCE = "onyx_app"
 SLACK_USER_TOKEN_PREFIX = "xoxp-"
